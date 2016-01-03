@@ -4551,8 +4551,8 @@ begin
     and (InRange(Y, 80, 81))) then
     begin
       Actions.GiveHouse(P, 17, X, Y);
-      Actions.HouseAddWaresTo(States.HouseAt(X, Y), 1, 5);
-      Actions.GiveUnit(P, 13, X, Y + 1, 4);
+      //Actions.HouseAddWaresTo(States.HouseAt(X, Y), 1, 5);
+      //Actions.GiveUnit(P, 13, X, Y + 1, 4);
       Actions.PlanConnectRoad(P, X, Y + 1, States.HousePositionX(States.ClosestHouse(P, X, Y, 11)), States.HousePositionY(States.ClosestHouse(P, X, Y, 11)) + 1, True);
     end;
 
