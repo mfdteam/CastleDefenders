@@ -1641,6 +1641,7 @@ procedure OnWarriorEquipped(aUnitID, aGroupID: Integer);
 var
   Rogue, Barb, Owner, Addition, GroupToLink: Integer;
   Groups, Groups1: array of Integer;
+  R: Integer;
 begin
   Owner := States.UnitOwner(aUnitID);
 
@@ -1703,20 +1704,30 @@ begin
   and (States.HouseResourceAmount(Barracks[Owner], 20) > 3)
   and (States.UnitType(aUnitID) = 14) then
   begin
-    if States.KaMRandom < 0.5 then
+    R := States.KaMRandomI(10);
+    if R < 5 then
     begin
       if not bDouble then
-        Barb := Actions.GiveGroup(States.UnitOwner(aUnitID), 23, States.UnitPositionX(aUnitID), States.UnitPositionY(aUnitID) + 1, 4, 1, 1)
-      else
+        Barb := Actions.GiveGroup(States.UnitOwner(aUnitID), 23, States.UnitPositionX(aUnitID), States.UnitPositionY(aUnitID) + 1, 4, 1, 1);
       if bDouble then
-        Barb := Actions.GiveGroup(States.UnitOwner(aUnitID), 23, States.UnitPositionX(aUnitID), States.UnitPositionY(aUnitID) + 1, 4, 1 + Byte(States.KaMRandom < DOUBLE_CHANCE), 1);
-    end   
-    else
+      begin
+        if States.KaMRandom < DOUBLE_CHANCE then
+          Barb := Actions.GiveGroup(States.UnitOwner(aUnitID), 23, States.UnitPositionX(aUnitID), States.UnitPositionY(aUnitID) + 1, 4, 2, 1)
+        else
+          Barb := Actions.GiveGroup(States.UnitOwner(aUnitID), 23, States.UnitPositionX(aUnitID), States.UnitPositionY(aUnitID) + 1, 4, 1, 1);
+      end;
+    end;
+    if R >= 5 then
     begin
       if not bDouble then
         Barb := Actions.GiveGroup(States.UnitOwner(aUnitID), 26, States.UnitPositionX(aUnitID), States.UnitPositionY(aUnitID) + 1, 4, 1, 1);
       if bDouble then
-        Barb := Actions.GiveGroup(States.UnitOwner(aUnitID), 26, States.UnitPositionX(aUnitID), States.UnitPositionY(aUnitID) + 1, 4, 1 + Byte(States.KaMRandom < DOUBLE_CHANCE), 1);
+      begin
+        if States.KaMRandom < DOUBLE_CHANCE then
+          Barb := Actions.GiveGroup(States.UnitOwner(aUnitID), 26, States.UnitPositionX(aUnitID), States.UnitPositionY(aUnitID) + 1, 4, 2, 1)
+        else
+          Barb := Actions.GiveGroup(States.UnitOwner(aUnitID), 26, States.UnitPositionX(aUnitID), States.UnitPositionY(aUnitID) + 1, 4, 1, 1);
+      end;
     end;
     Actions.HouseTakeWaresFrom(Barracks[Owner], 20, 3);
     Actions.GroupHungerSet(Barb, States.UnitMaxHunger);
