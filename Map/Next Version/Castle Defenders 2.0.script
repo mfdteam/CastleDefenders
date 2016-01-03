@@ -4891,7 +4891,8 @@ begin
       if (States.StatArmyCount(I) <= RESCUE_ARMY_COUNT)
       and (States.StatUnitTypeCount(I, 13) <= RESCUE_RECRUITS_COUNT)
       and (RescuesCount[I] > 0)
-      and (RescuesDelay[I] = 0) then
+      and (RescuesDelay[I] = 0)
+      and (not States.PlayerDefeated(I)) then
         Actions.ShowMsgGoTo(I, RescueTileX[I], RescueTileY[I], '<$72>');
 end;
 
