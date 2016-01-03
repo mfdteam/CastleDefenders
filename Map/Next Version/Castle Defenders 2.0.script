@@ -1639,7 +1639,7 @@ end;
 
 procedure OnWarriorEquipped(aUnitID, aGroupID: Integer);
 var
-  Rogue, Barb, Barb2, Owner, Addition, GroupToLink: Integer;
+  Rogue, Barb, Owner, Addition, GroupToLink: Integer;
   Groups, Groups1: array of Integer;
 begin
   Owner := States.UnitOwner(aUnitID);
@@ -1723,7 +1723,6 @@ begin
     Actions.GroupOrderLink(Barb, aGroupID);
     Actions.GroupSetFormation(aGroupID, 1 + Round(sqrt(States.GroupMemberCount(aGroupID))));
     Actions.UnitKill(aUnitID, True);
-    Actions.GroupOrderLink(Barb2, aGroupID);
 
   end;
 
