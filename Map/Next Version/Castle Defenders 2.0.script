@@ -4583,21 +4583,22 @@ var
   X: Integer;
 begin
   for X := 74 to 76 do
-  begin
     if States.UnitAt(X, 80) <> - 1 then
       Actions.UnitKill(States.UnitAt(X, 80), False);
-    //Actions.MapTileObjectSet(X, 80, RandomObject);
-  end;
 
-  Actions.MapTileObjectSet(X, 80, 60);
-  Actions.MapTileObjectSet(X, 80, 8);
-  Actions.MapTileObjectSet(X, 80, 21);
+  Actions.MapTileObjectSet(74, 80, 60);
+  Actions.MapTileObjectSet(75, 80, 8);
+  if States.KaMRandom < 0.5 then
+    Actions.MapTileObjectSet(76, 80, 21)
+  else
+    Actions.MapTileObjectSet(76, 80, 220);
 
   Actions.ShowMsgFormatted(-1, '<$61>', [LateBonusName(74, 80), LateBonusName(75, 80), LateBonusName(76, 80)]);
   Actions.ShowMsgGoTo(-1, 74, 80, LateBonusDescription(74, 80));
   Actions.ShowMsgGoTo(-1, 75, 80, LateBonusDescription(75, 80));
   Actions.ShowMsgGoTo(-1, 76, 80, LateBonusDescription(76, 80));
   LateBonusCheck := True;
+
 end;
 
 
