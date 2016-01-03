@@ -34,6 +34,7 @@ const
   RANDOM_FACTOR = 100;                 //Random
   ENABLE_SPLITTING = False;            //Anti-cheat (disables cmowla style abuse)
   SPLIT_CHECK_FACTOR = 15;             //Once per 15 ticks
+  MAX_TOWERS = 2;                      //2  towers per player
   MAP_VERSION = '[$CD9B4B]2.0[]';      //Map version
 
 
@@ -2159,7 +2160,12 @@ begin
 
          for I := 0 to 3 do
            if States.PlayerEnabled(I) then
+           begin
              Actions.GiveWares(I, 7, 12 + 3 * Q);
+             Actions.HouseUnlock(I, 17);
+           end;
+
+         Actions.ShowMsg(-1, '<$91>');
 
          AIGroup := Actions.GiveGroup(4, 19, AISpawnX[0][4], AISpawnY[0][4], 4, 8, 4);
          Actions.GroupOrderWalk(AIGroup, RallyPointX[4], RallyPointY[4], 4);
@@ -4525,6 +4531,33 @@ begin
   end;
 
   Actions.PlanRemove(aIndex, aX, aY);
+end;
+
+
+procedure OnHousePlanPlaced(P, X, Y, HT: Integer);
+begin
+
+  Actions.PlanRemove(P, X, Y);
+
+  if HT = 17 then
+  begin
+    if States.StatHouseTypeCount(P, 17) >= MAX_TOWERS then
+      Actions.ShowMsg(P, '<$92>');
+
+    if (States.StatHouseTypeCount(P, 17) < MAX_TOWERS)
+    and (InRange(X, 46, 105))
+    and (InRange(Y, 46, 105))
+    and not ((InRange(X, 74, 76))
+    and (InRange(Y, 80, 81))) then
+    begin
+      Actions.GiveHouse(P, 17, X, Y);
+      Actions.HouseAddWaresTo(States.HouseAt(X, Y), 1, 5);
+      Actions.GiveUnit(P, 13, X, Y + 1, 4);
+      Actions.PlanConnectRoad(P, X, Y + 1, States.HousePositionX(States.ClosestHouse(P, X, Y, 11)), States.HousePositionY(States.ClosestHouse(P, X, Y, 11)) + 1, True);
+    end;
+
+  end;
+
 end;
 
 
