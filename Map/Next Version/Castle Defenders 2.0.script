@@ -35,7 +35,7 @@ const
   ENABLE_SPLITTING = False;            //Anti-cheat (disables cmowla style abuse)
   SPLIT_CHECK_FACTOR = 15;             //Once per 15 ticks
   MAX_TOWERS = 2;                      //2  towers per player
-  MAP_VERSION = '[$CD9B4B]2.0[]';      //Map version
+  MAP_VERSION = '[$CD9B4B]2.1 RC1[]';      //Map version
 
 
 type
@@ -568,7 +568,10 @@ begin
                      EnemySoldiers := States.PlayerGetAllUnits(I);
                    for K := 0 to length(EnemySoldiers) - 1 do
                      if States.KaMRandom < POISON_CHANCE then
+                     begin
                        Actions.UnitKill(EnemySoldiers[K], False);
+                       Scores[aPlayer] := Scores[aPlayer] + 1;
+                     end;
                  end;
 
                  for I := 0 to 3 do
@@ -594,7 +597,10 @@ begin
                      EnemySoldiers := States.PlayerGetAllUnits(I);
                    for K := 0 to length(EnemySoldiers) - 1 do
                      if States.KaMRandom < DROUGHT_CHANCE then
+                     begin
                        Actions.UnitHungerSet(EnemySoldiers[K], 400);
+                       Scores[aPlayer] := Scores[aPlayer] + 1;
+                     end;
                  end;
 
                  for I := 0 to 3 do
@@ -1534,7 +1540,8 @@ begin
     Exit;
 
   if (InRange(States.UnitOwner(aUnitID), 4, 7))
-  and (InRange(aKillerIndex, 0, 3)) then
+  and (InRange(aKillerIndex, 0, 3))
+  and (States.UnitHunger(aUnitID) > 400) then
     Scores[aKillerIndex] := Scores[aKillerIndex] + 1;
 
   UnlockWarriors;
@@ -1615,7 +1622,8 @@ begin
   begin
     if States.KaMRandom < KILL_CHANCE then
     begin
-      if InRange(States.UnitOwner(aAttacker), 0, 3) then
+      if (InRange(States.UnitOwner(aAttacker), 0, 3))
+      and (States.UnitHunger(aUnitID) > 400) then
         inc(Scores[States.UnitOwner(aAttacker)]);
       if InRange(States.UnitOwner(aUnitID), 4, 7) then
         Actions.UnitKill(aUnitID, False);
@@ -1627,7 +1635,8 @@ begin
     if States.KaMRandom < RETRIBUTION_CHANCE then
     begin
       if (InRange(States.UnitOwner(aUnitID), 0, 3))
-      and (InRange(States.UnitOwner(aAttacker), 4, 7)) then
+      and (InRange(States.UnitOwner(aAttacker), 4, 7))
+      and (States.UnitHunger(aAttacker) > 400) then
       begin
         inc(Scores[States.UnitOwner(aUnitID)]);
         Actions.UnitKill(aAttacker, False);
