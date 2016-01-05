@@ -2054,7 +2054,7 @@ begin
          AIGroup := Actions.GiveGroup(6, 14, 126, 128, 0, 2, 2);
          Actions.GroupOrderWalk(AIGroup, 90, 93, 0);
 
-         AIGroup := Actions.GiveGroup(7, 14, 25, 127, 0, 2, 2);
+         AIGroup := Actions.GiveGroup(7, 14, 37, 133, 0, 2, 2);
          Actions.GroupOrderWalk(AIGroup, 56, 84, 0);
          AIGroup := Actions.GiveGroup(7, 14, 18, 122, 2, 2, 2);
          Actions.GroupOrderWalk(AIGroup, 64, 94, 0);
@@ -2109,7 +2109,7 @@ begin
          AIGroup := Actions.GiveGroup(6, 14, 126, 128, 0, 4, 2);
          Actions.GroupOrderWalk(AIGroup, 90, 93, 0);
 
-         AIGroup := Actions.GiveGroup(7, 14, 25, 127, 0, 4, 2);
+         AIGroup := Actions.GiveGroup(7, 14, 37, 133, 0, 4, 2);
          Actions.GroupOrderWalk(AIGroup, 56, 84, 0);
          AIGroup := Actions.GiveGroup(7, 14, 18, 122, 2, 4, 2);
          Actions.GroupOrderWalk(AIGroup, 64, 94, 0);
@@ -2166,7 +2166,7 @@ begin
          AIGroup := Actions.GiveGroup(6, 14, 126, 128, 0, 4, 2);
          Actions.GroupOrderWalk(AIGroup, 90, 93, 0);
 
-         AIGroup := Actions.GiveGroup(7, 19, 25, 127, 0, 2, 2);
+         AIGroup := Actions.GiveGroup(7, 19, 37, 133, 0, 2, 2);
          Actions.GroupOrderWalk(AIGroup, 56, 84, 0);
          AIGroup := Actions.GiveGroup(7, 14, 18, 122, 2, 4, 2);
          Actions.GroupOrderWalk(AIGroup, 64, 94, 0);
@@ -2221,7 +2221,7 @@ begin
          AIGroup := Actions.GiveGroup(6, 19, 126, 128, 0, 3, 3);
          Actions.GroupOrderWalk(AIGroup, 90, 93, 0);
 
-         AIGroup := Actions.GiveGroup(7, 19, 25, 127, 0, 3, 3);
+         AIGroup := Actions.GiveGroup(7, 19, 37, 133, 0, 3, 3);
          Actions.GroupOrderWalk(AIGroup, 56, 84, 0);
          AIGroup := Actions.GiveGroup(7, 19, 18, 122, 2, 3, 3);
          Actions.GroupOrderWalk(AIGroup, 64, 94, 0);
@@ -2281,7 +2281,7 @@ begin
          AIGroup := Actions.GiveGroup(6, 14, 126, 128, 0, 4, 2);
          Actions.GroupOrderWalk(AIGroup, 90, 93, 0);
 
-         AIGroup := Actions.GiveGroup(7, 15, 25, 127, 0, 4, 2);
+         AIGroup := Actions.GiveGroup(7, 15, 37, 133, 0, 4, 2);
          Actions.GroupOrderWalk(AIGroup, 56, 84, 0);
          AIGroup := Actions.GiveGroup(7, 14, 18, 122, 2, 4, 2);
          Actions.GroupOrderWalk(AIGroup, 64, 94, 0);
@@ -2336,7 +2336,7 @@ begin
          AIGroup := Actions.GiveGroup(6, 19, 126, 128, 0, 4, 2);
          Actions.GroupOrderWalk(AIGroup, 90, 93, 0);
 
-         AIGroup := Actions.GiveGroup(7, 15, 25, 127, 0, 4, 2);
+         AIGroup := Actions.GiveGroup(7, 15, 37, 133, 0, 4, 2);
          Actions.GroupOrderWalk(AIGroup, 56, 84, 0);
          AIGroup := Actions.GiveGroup(7, 19, 18, 122, 2, 4, 2);
          Actions.GroupOrderWalk(AIGroup, 64, 94, 0);
@@ -2391,7 +2391,7 @@ begin
          AIGroup := Actions.GiveGroup(6, 21, 126, 128, 0, 4, 2);
          Actions.GroupOrderWalk(AIGroup, 90, 93, 0);
 
-         AIGroup := Actions.GiveGroup(7, 19, 25, 127, 0, 4, 2);
+         AIGroup := Actions.GiveGroup(7, 19, 37, 133, 0, 4, 2);
          Actions.GroupOrderWalk(AIGroup, 56, 84, 0);
          AIGroup := Actions.GiveGroup(7, 21, 18, 122, 2, 4, 2);
          Actions.GroupOrderWalk(AIGroup, 64, 94, 0);
@@ -2446,7 +2446,7 @@ begin
          AIGroup := Actions.GiveGroup(6, 21, 126, 128, 0, 4, 2);
          Actions.GroupOrderWalk(AIGroup, 90, 93, 0);
 
-         AIGroup := Actions.GiveGroup(7, 15, 25, 127, 0, 6, 2);
+         AIGroup := Actions.GiveGroup(7, 15, 37, 133, 0, 6, 2);
          Actions.GroupOrderWalk(AIGroup, 56, 84, 0);
          AIGroup := Actions.GiveGroup(7, 21, 18, 122, 2, 4, 2);
          Actions.GroupOrderWalk(AIGroup, 64, 94, 0);
@@ -2501,7 +2501,7 @@ begin
          AIGroup := Actions.GiveGroup(6, 21, 126, 128, 0, 4, 2);
          Actions.GroupOrderWalk(AIGroup, 90, 93, 0);
 
-         AIGroup := Actions.GiveGroup(7, 21, 25, 127, 0, 4, 2);
+         AIGroup := Actions.GiveGroup(7, 21, 37, 133, 0, 4, 2);
          Actions.GroupOrderWalk(AIGroup, 56, 84, 0);
          AIGroup := Actions.GiveGroup(7, 21, 18, 122, 2, 4, 2);
          Actions.GroupOrderWalk(AIGroup, 64, 94, 0);
@@ -2556,7 +2556,7 @@ begin
          AIGroup := Actions.GiveGroup(6, 21, 126, 128, 0, 6, 2);
          Actions.GroupOrderWalk(AIGroup, 90, 93, 0);
 
-         AIGroup := Actions.GiveGroup(7, 21, 25, 127, 0, 6, 2);
+         AIGroup := Actions.GiveGroup(7, 21, 37, 133, 0, 6, 2);
          Actions.GroupOrderWalk(AIGroup, 56, 84, 0);
          AIGroup := Actions.GiveGroup(7, 21, 18, 122, 2, 6, 2);
          Actions.GroupOrderWalk(AIGroup, 64, 94, 0);
@@ -2611,7 +2611,7 @@ begin
          AIGroup := Actions.GiveGroup(6, 15, 126, 128, 0, 4, 2);
          Actions.GroupOrderWalk(AIGroup, 90, 93, 0);
 
-         AIGroup := Actions.GiveGroup(7, 20, 25, 127, 0, 3, 3);
+         AIGroup := Actions.GiveGroup(7, 20, 37, 133, 0, 3, 3);
          Actions.GroupOrderWalk(AIGroup, 56, 84, 0);
          AIGroup := Actions.GiveGroup(7, 15, 18, 122, 2, 4, 2);
          Actions.GroupOrderWalk(AIGroup, 64, 94, 0);
