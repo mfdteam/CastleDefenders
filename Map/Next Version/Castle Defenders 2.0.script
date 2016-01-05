@@ -89,7 +89,8 @@ begin
     if States.PlayerEnabled(I) then
       UnitsToFeed := States.PlayerGetAllUnits(I);
     for K := 0 to length(UnitsToFeed) - 1 do
-      Actions.UnitHungerSet(UnitsToFeed[K], States.UnitMaxHunger);
+      if States.UnitHunger(UnitsToFeed[K]) > 400 then
+        Actions.UnitHungerSet(UnitsToFeed[K], States.UnitMaxHunger);
   end;
 end;
 
