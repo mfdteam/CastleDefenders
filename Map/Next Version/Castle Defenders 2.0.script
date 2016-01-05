@@ -20,7 +20,7 @@ const
   START_WAVES_DELAY = 1200;            //2 minutes delay
   MID_WAVES_DELAY = 1800;              //3 minutes delay
   LATE_WAVES_DELAY = 2400;             //4 minutes delay
-  RESCUES_PER_PLAYER = 4;              //Player can use bonus 4 times
+  RESCUES_PER_PLAYER = 3;              //Player can use bonus 3 times
   RESCUE_WAVE = 26;                    //Bonus available since 26th wave
   MAX_RANGED = 150;                    //Maximum ranged count per player
   DEBUG_MODE = False;                  //Debug option, to see how script works
