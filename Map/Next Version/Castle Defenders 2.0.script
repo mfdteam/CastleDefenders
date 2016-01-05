@@ -15,7 +15,7 @@ const
   MAX_ARMY_COUNT = 120;                //Maximum army count to activate extra recruits bonus
   RESCUE_RECRUITS_COUNT = 10;          //Maximum recruits count for rescue squad bonus
   RESCUE_ARMY_COUNT = 110;             //Player should have no more than 110 soldiers to use rescue squad bonus
-  RESCUE_DELAY = 2400;                 //4 minutes delay
+  RESCUE_DELAY = 900;                  //1,5 minutes delay
   LATE_BONUS_DELAY = 1800;             //3 minutes delay
   START_WAVES_DELAY = 1200;            //2 minutes delay
   MID_WAVES_DELAY = 1800;              //3 minutes delay
