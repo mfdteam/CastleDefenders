@@ -68,10 +68,11 @@ var
   RallyPointX, RallyPointY, AttackPointX, AttackPointY: array[4..7] of Integer;
   AISpawnX, AISpawnY: array[0..2] of array[4..7] of Integer;
   TileInfo: array[41..110] of array[41..110] of TileInfoRec;
-  SortedPlayers, ShowStatusStart: array[0..3] of Integer;
+  ShowStatusStart: array[0..3] of Integer;
   StatusString: array[0..3] of ANSIString;
   GroupRandomType: array[0..RANDOM_FACTOR - 1] of Integer;
   Q: Integer;
+  SortedPlayers, ActivePlayers: array of Integer;
 
 
 function InRange(Number, Min, Max: Integer): Boolean;
@@ -790,6 +791,15 @@ begin
   else
     Q := 0;
 
+  for I := 0 to 3 do
+    if States.PlayerEnabled(I) then
+    begin
+      SetLength(ActivePlayers, Length(ActivePlayers) + 1);
+      ActivePlayers[Length(ActivePlayers) - 1] := I;
+      SetLength(SortedPlayers, Length(SortedPlayers) + 1);
+      SortedPlayers[Length(SortedPlayers) - 1] := I;
+    end;
+
   Wave := 1;
   WaveTime := 1200;
   General := States.UnitAt(75, 77);
@@ -974,7 +984,6 @@ begin
     begin
       ShowStatusStart[I] := 0;
       StatusString[I] := '';
-      SortedPlayers[I] := I;
       RescuesCount[I] := RESCUES_PER_PLAYER;
       RescuesDelay[I] := 0;
       RescueArmy[I] := RESCUE_ARMY_COUNT;
@@ -4911,18 +4920,20 @@ procedure SortScores;
 var
   Temp: Integer;
 begin
-  for I := 3 downto 1 do
+
+  if Length(ActivePlayers) <= 0 then
+    Exit;
+
+  for I := Length(ActivePlayers) - 1 downto 1 do
   begin
-    if States.PlayerEnabled(I) then
+    if Scores[SortedPlayers[I]] > Scores[SortedPlayers[I - 1]] then
     begin
-      if Scores[SortedPlayers[I]] > Scores[SortedPlayers[I - 1]] then
-      begin
-        Temp := SortedPlayers[I - 1];
-        SortedPlayers[I - 1] := SortedPlayers[I];
-        SortedPlayers[I] := Temp;
-      end;
+      Temp := SortedPlayers[I - 1];
+      SortedPlayers[I - 1] := SortedPlayers[I];
+      SortedPlayers[I] := Temp;
     end;
   end;
+
 end;
 
 
@@ -4999,16 +5010,10 @@ procedure OnTick;
 begin
 
   Actions.OverlayTextSetFormatted(-1, DebugHeader + '<$70> ' + MAP_VERSION + '||<$2> ' + IntToStr(Wave) + ' - ' + WaveName + '|<$5>' + '|<$1>', [((WaveTime div 600) mod 60), ((WaveTime div 10) mod 60)]);
-  for I := 0 to 3 do
-  begin
-    if States.PlayerEnabled(I) then
-    begin
-      if States.StatPlayerCount >= 9 then
-        Actions.OverlayTextAppendFormatted(-1, '|<$0>' + ' ' + StatusString[SortedPlayers[I]], [States.PlayerColorText(SortedPlayers[I]), States.PlayerName(SortedPlayers[I]), Scores[SortedPlayers[I]]]);
-      if States.StatPlayerCount < 9 then
-        Actions.OverlayTextAppendFormatted(-1, '|<$0>' + ' ' + StatusString[I], [States.PlayerColorText(I), States.PlayerName(I), Scores[I]]);
-    end;
-  end;
+
+  if Length(SortedPlayers) > 0 then
+    for I := 0 to Length(SortedPlayers) - 1 do
+      Actions.OverlayTextAppendFormatted(-1, '|<$0>' + ' ' + StatusString[SortedPlayers[I]], [States.PlayerColorText(SortedPlayers[I]), States.PlayerName(SortedPlayers[I]), Scores[SortedPlayers[I]]]);
 
   for I := 0 to 3 do
   begin
