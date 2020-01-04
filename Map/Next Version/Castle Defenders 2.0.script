@@ -35,10 +35,19 @@ const
   ENABLE_SPLITTING = False;            //Anti-cheat (disables cmowla style abuse)
   SPLIT_CHECK_FACTOR = 15;             //Once per 15 ticks
   MAX_TOWERS = 2;                      //2  towers per player
-  DIFFICULTY_FACTOR_NORMAL = 1;
-  DIFFICULTY_FACTOR_EASY = 0.75;
-  DIFFICULTY_FACTOR_HARD = 1.33;  
-  MAP_VERSION = '[$CD9B4B]3.0 RC1[]';      //Map version
+  DIFFICULTY_FACTOR_NORMAL = 1;        //Difficulty factor for normal mode
+  DIFFICULTY_FACTOR_EASY = 0.75;       //Difficulty factor for easy mode
+  DIFFICULTY_FACTOR_HARD = 1.33;       //Difficulty factor for hard mode
+  LANCE_POINTS = 50;
+  AXE_POINTS = 100; 
+  BOW_POINTS = 160;
+  CROSSBOW_POINTS = 250;
+  SCOUT_POINTS = 400;
+  PIKE_POINTS = 500;
+  SWORD_POINTS = 700; 
+  BARB_POINTS = 1000;
+  KNIGHT_POINTS = 1250;
+  MAP_VERSION = '[$CD9B4B]3.0 RC1[]';  //Map version
 
 
 type
@@ -1365,7 +1374,7 @@ procedure UnlockWarriors;
 begin
   for I := 0 to 3 do
   begin
-    if Scores[I] >= RoundTo(50 * DifficultyFactor, 10, 1, True) then
+    if Scores[I] >= RoundTo(LANCE_POINTS * DifficultyFactor, 10, 1, True) then
       if not Unlocked[I][19] then
       begin
         Actions.UnitBlock(I, 19, False);
@@ -1378,7 +1387,7 @@ begin
 
   for I := 0 to 3 do
   begin
-    if Scores[I] >= RoundTo(100 * DifficultyFactor, 10, 1, True) then
+    if Scores[I] >= RoundTo(AXE_POINTS * DifficultyFactor, 10, 1, True) then
       if not Unlocked[I][15] then
       begin
         Actions.UnitBlock(I, 15, False);
@@ -1391,7 +1400,7 @@ begin
 
   for I := 0 to 3 do
   begin
-    if Scores[I] >= RoundTo(160 * DifficultyFactor, 10, 1, True) then
+    if Scores[I] >= RoundTo(BOW_POINTS * DifficultyFactor, 10, 1, True) then
       if not Unlocked[I][17] then
       begin
         Actions.UnitBlock(I, 17, False);
@@ -1404,7 +1413,7 @@ begin
 
   for I := 0 to 3 do
   begin
-    if Scores[I] >= RoundTo(250 * DifficultyFactor, 10, 1, True) then
+    if Scores[I] >= RoundTo(CROSSBOW_POINTS * DifficultyFactor, 10, 1, True) then
       if not Unlocked[I][18] then
       begin
         Actions.UnitBlock(I, 18, False);
@@ -1417,7 +1426,7 @@ begin
 
   for I := 0 to 3 do
   begin
-    if Scores[I] >= RoundTo(500 * DifficultyFactor, 10, 1, True) then
+    if Scores[I] >= RoundTo(PIKE_POINTS * DifficultyFactor, 10, 1, True) then
       if not Unlocked[I][20] then
       begin
         Actions.UnitBlock(I, 20, False);
@@ -1430,7 +1439,7 @@ begin
 
   for I := 0 to 3 do
   begin
-    if Scores[I] >= RoundTo(400 * DifficultyFactor, 10, 1, True) then
+    if Scores[I] >= RoundTo(SCOUT_POINTS * DifficultyFactor, 10, 1, True) then
       if not Unlocked[I][21] then
       begin
         Actions.UnitBlock(I, 21, False);
@@ -1443,7 +1452,7 @@ begin
 
   for I := 0 to 3 do
   begin
-    if Scores[I] >= RoundTo(700 * DifficultyFactor, 10, 1, True) then
+    if Scores[I] >= RoundTo(SWORD_POINTS * DifficultyFactor, 5, 1, True) then
       if not Unlocked[I][16] then
       begin
         Actions.UnitBlock(I, 16, False);
@@ -1456,7 +1465,7 @@ begin
 
   for I := 0 to 3 do
   begin
-    if Scores[I] >= RoundTo(1000 * DifficultyFactor, 10, 1, True) then
+    if Scores[I] >= RoundTo(BARB_POINTS * DifficultyFactor, 5, 1, True) then
       if not Unlocked[I][23] then
       begin
         Actions.UnitBlock(I, 23, False);
@@ -1469,7 +1478,7 @@ begin
 
   for I := 0 to 3 do
   begin
-    if Scores[I] >= RoundTo(1250 * DifficultyFactor, 10, 1, True) then
+    if Scores[I] >= RoundTo(KNIGHT_POINTS * DifficultyFactor, 5, 1, True) then
       if not Unlocked[I][22] then
       begin
         Actions.UnitBlock(I, 22, False);
@@ -3507,7 +3516,7 @@ begin
          if bNewConscription then
            AddRecruits;
 
-         Actions.ShowMsg(-1, '<$78>');
+         Actions.ShowMsgFormatted(-1, '<$78>', [RoundTo(RESCUE_ARMY_COUNT / DifficultyFactor, 20, 1, True), RoundTo(RESCUE_RECRUITS_COUNT / DifficultyFactor, 5, 1, True)]);
 
          AIGroup := Actions.GiveGroup(4, 22, 57, 10, 4, RoundTo(25 * DifficultyFactor, 5, 1, True), 5);
          Actions.GroupOrderWalk(AIGroup, 75, 55, 4);
@@ -5154,6 +5163,17 @@ begin
   if (Wave >= LATE_BONUS_WAVE)
   and (States.GameTime mod 3 = 0) then
     ReCheckTiles;
+
+  if States.GameTime = 100 then
+    Actions.ShowMsgFormatted(-1, '<$93>', [States.UnitTypeName(19), RoundTo(LANCE_POINTS * DifficultyFactor, 10, 1, True),
+    States.UnitTypeName(15), RoundTo(AXE_POINTS * DifficultyFactor, 10, 1, True),
+    States.UnitTypeName(17), RoundTo(BOW_POINTS * DifficultyFactor, 10, 1, True),
+    States.UnitTypeName(18), RoundTo(CROSSBOW_POINTS * DifficultyFactor, 10, 1, True),
+    States.UnitTypeName(21), RoundTo(SCOUT_POINTS * DifficultyFactor, 10, 1, True),
+    States.UnitTypeName(20), RoundTo(PIKE_POINTS * DifficultyFactor, 10, 1, True),
+    States.UnitTypeName(16), RoundTo(SWORD_POINTS * DifficultyFactor, 5, 1, True),
+    States.UnitTypeName(23), RoundTo(BARB_POINTS * DifficultyFactor, 5, 1, True),
+    States.UnitTypeName(22), RoundTo(KNIGHT_POINTS * DifficultyFactor, 5, 1, True)]);
 
   if States.GameTime = 200 then
     Actions.ShowMsg(-1, '<$73>');

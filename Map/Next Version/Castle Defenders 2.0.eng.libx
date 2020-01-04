@@ -71,15 +71,15 @@
 70:[$CD9B4B]Castle Defenders[]
 71:||||Team bonuses available: [$%s]%s[], [$%s]%s[], [$%s]%s[] |Delay: %.2d:%.2d
 72:Don't forget about Rescue Squad bonus - you can use it right now! Just place road plan in the special rescue tile located in the wall corner where this message sends you!
-73:Tip #1: Don't waste gold! You have not so much gold, and a lot of weak soldiers equipped too early will be useless later.
-74:Tip #2: Arrange defence positions within team. The best way is to defend corners (two flank and one middle entrances per player).
-75:Tip #3: No need to send much soldiers to defend flanks until 13th wave. Only some enemy soldiers could go there, so one small squad will be enough to kill them.
-76:Tip #4: Check wave names - sometimes they can help you to choose troops for defence.
-77:Tip #5: From now you have to defend flanks.
-78:Tip #6: To use Rescue Squad bonus, you should have too less soldiers and recruits. Usage limits: 110 soldiers and 10 recruits.
-79:Tip #8: To use Lategame Bonuses, place winefield plan one tile down from special objects near the allied Barracks.
-80:Tip #7: Lost all your serfs? Don't worry! Place Field plans within the Castle to respawn them.
-81:Tip #9: From now enemies will send extra ambush squads to attack the Castle. Prepare for long sieges!
+73:Tip #2: Don't waste gold! You have not so much gold, and a lot of weak soldiers equipped too early will be useless later.
+74:Tip #3: Arrange defence positions within team. The best way is to defend corners (two flank and one middle entrances per player).
+75:Tip #4: No need to send much soldiers to defend flanks until 13th wave. Only some enemy soldiers could go there, so one small squad will be enough to kill them.
+76:Tip #5: Check wave names - sometimes they can help you to choose troops for defence.
+77:Tip #6: From now you have to defend flanks.
+78:Tip #7: To use Rescue Squad bonus, you should have too less soldiers and recruits. Usage limits: %d soldiers and %d recruits.
+79:Tip #9: To use Lategame Bonuses, place winefield plan one tile down from special objects near the allied Barracks.
+80:Tip #8: Lost all your serfs? Don't worry! Place Field plans within the Castle to respawn them.
+81:Tip #10: From now enemies will send extra ambush squads to attack the Castle. Prepare for long sieges!
 82:Ambushed!
 83:Unlocked
 84:Used Rescue Squad!
@@ -89,5 +89,6 @@
 88:Used Moat bonus
 89:Used Poisoning bonus
 90:Used Drought bonus
-91:Now you can build Watchtowers. Place a tower plan within the Castle, where you need to have it. You can build 2 towers only.
+91:Now you can build Watchtowers. Place a tower plan within the Castle, where you need to have it. You can build limited number of towers.
 92:You have enough towers already!
+93:Tip #1: Soldiers unlocking order: %s - %d kills; %s - %d kills; %s - %d kills; %s - %d kills; %s - %d kills; %s - %d kills; %s - %d kills; %s - %d kills; %s - %d kills.
