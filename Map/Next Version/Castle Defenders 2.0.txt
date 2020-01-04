@@ -3,3 +3,6 @@ BlockPeacetime
 BlockTeamSelection
 BigDescLibx
 51
+
+DifficultyLevels
+mdEasy1,mdNormal,mdHard1
