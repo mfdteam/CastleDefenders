@@ -35,7 +35,7 @@ const
   ENABLE_SPLITTING = False;            //Anti-cheat (disables cmowla style abuse)
   SPLIT_CHECK_FACTOR = 15;             //Once per 15 ticks
   MAX_TOWERS = 2;                      //2  towers per player
-  MAP_VERSION = '[$CD9B4B]2.1 RC1[]';      //Map version
+  MAP_VERSION = '[$CD9B4B]2.1[]';      //Map version
 
 
 type
@@ -668,9 +668,9 @@ begin
   for K := 4 to 7 do
   begin
     Groups := States.PlayerGetAllGroups(K);
-  for I := 0 to length(Groups) - 1 do
-    if States.GroupIdle(Groups[I]) then
-      Actions.GroupOrderWalk(Groups[I], AttackPointX[States.GroupOwner(Groups[I])], AttackPointY[States.GroupOwner(Groups[I])], States.KaMRandomI(8));
+    for I := 0 to length(Groups) - 1 do
+      if States.GroupIdle(Groups[I]) then
+        Actions.GroupOrderWalk(Groups[I], AttackPointX[States.GroupOwner(Groups[I])], AttackPointY[States.GroupOwner(Groups[I])], States.KaMRandomI(8));
   end;
 end;
 
@@ -1057,19 +1057,19 @@ begin
     120..139: begin
                 bRanged := True;
                 if not bMsg then
-              begin
-                Actions.ShowMsg(-1, '<$6> ' + '<$52>: ' + '<$53>');
-                bMsg := True;
-              end;
+                begin
+                  Actions.ShowMsg(-1, '<$6> ' + '<$52>: ' + '<$53>');
+                  bMsg := True;
+                end;
             end;
 
     140..149: begin
                 bRetribution := True;
                 if not bMsg then
-              begin
-                Actions.ShowMsg(-1, '<$6> ' + '<$59>: ' + '<$60>');
-                bMsg := True;
-              end;
+                begin
+                  Actions.ShowMsg(-1, '<$6> ' + '<$59>: ' + '<$60>');
+                  bMsg := True;
+                end;
             end;
 
   end;
