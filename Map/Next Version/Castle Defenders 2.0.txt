@@ -1,8 +1,12 @@
-SetSpecial
-BlockPeacetime
-BlockTeamSelection
-BigDescLibx
+BigDescLIBX
 51
+
+SetSpecial
+
+BlockPeacetime
+
+BlockTeamSelection
 
 DifficultyLevels
 mdEasy1,mdNormal,mdHard1
+
