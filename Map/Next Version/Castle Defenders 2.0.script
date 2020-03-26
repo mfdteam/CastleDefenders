@@ -4657,6 +4657,21 @@ begin
 end;
 
 
+function CanBuildRoads(FromX, FromY, ToX, ToY: Integer): Boolean;
+var
+  aX, aY: Integer;
+begin
+  Result := True;
+  for aX := FromX to ToX do
+    for aY := FromY to ToY do
+      if not States.MapTilePassability(aX, aY, 4) then
+      begin
+        Result := False;
+        Exit;
+      end;
+end;
+
+
 procedure OnHousePlanPlaced(P, X, Y, HT: Integer);
 begin
 
@@ -4671,7 +4686,11 @@ begin
     and (Utils.InRangeI(X, 46, 105))
     and (Utils.InRangeI(Y, 46, 105))
     and not ((Utils.InRangeI(X, 74, 76))
-    and (Utils.InRangeI(Y, 80, 81))) then
+    and (Utils.InRangeI(Y, 80, 81)))
+    and ((CanBuildRoads(X - 2, Y + 1, X, Y + 1))
+    or (CanBuildRoads(X - 1, Y + 1, X + 1, Y + 1)))
+    and ((CanBuildRoads(X - 2, Y - 1, X - 2, Y + 1))
+    or (CanBuildRoads(X + 1, Y - 1, X + 1, Y + 1))) then
     begin
       Actions.GiveHouse(P, 17, X, Y);
       Actions.PlanConnectRoad(P, X, Y + 1, States.HousePositionX(States.ClosestHouse(P, X, Y, 11)), States.HousePositionY(States.ClosestHouse(P, X, Y, 11)) + 1, True);
