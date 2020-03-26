@@ -1057,6 +1057,42 @@ begin
 end;
 
 
+function BonusChanceString: ANSIString;
+begin
+  
+  if Wave < BONUS_WAVE then
+    Result := '';
+
+  if bImmediateKill then
+    Result := '(' + Utils.FormatFloat('0.##', 100 * KILL_CHANCE / DifficultyFactor) + '%)';
+
+  if bDouble then
+    Result := '(' + Utils.FormatFloat('0.##', 100 * DOUBLE_CHANCE / DifficultyFactor) + '%)';
+
+  if bNewConscription then
+    Result := '';
+
+  if bReinforce then
+    Result := '';
+
+  if bReborn then
+    Result := '(' + Utils.FormatFloat('0.##', 100 * REBORN_CHANCE / DifficultyFactor) + '%)';
+
+  if bNewborn then
+    Result := '(' + Utils.FormatFloat('0.##', 100 * NEWBORN_CHANCE / DifficultyFactor) + '%)';
+
+  if bRanged then
+    Result := '(' + Utils.FormatFloat('0.##', 100 * RANGED_CHANCE / DifficultyFactor) + '%)';
+
+  if bRetribution then
+    Result := '(' + Utils.FormatFloat('0.##', 100 * RETRIBUTION_CHANCE / DifficultyFactor) + '%)';
+
+  if bArmor then
+    Result := '(' + Utils.FormatFloat('0.##', 100 * ARMOR_CHANCE / DifficultyFactor) + '%)';
+
+end;
+
+
 procedure AddRecruits;
 begin
   for I := 0 to 3 do
@@ -4974,7 +5010,7 @@ begin
       Actions.OverlayTextAppendFormatted(-1, '|<$0>' + ' ' + StatusString[SortedPlayers[I]], [States.PlayerColorText(SortedPlayers[I]), States.PlayerName(SortedPlayers[I]), Scores[SortedPlayers[I]]]);
 
   if Wave >= BONUS_WAVE then
-    Actions.OverlayTextAppend(-1, '||<$96>: ' + '[$AA8970]' + BonusName + '[]');
+    Actions.OverlayTextAppend(-1, '||<$96>: ' + '[$AA8970]' + BonusName + ' ' + BonusChanceString + '[]');
 
   for I := 0 to 3 do
   begin
