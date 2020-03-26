@@ -89,9 +89,13 @@
 88:Used Moat bonus
 89:Used Poisoning bonus
 90:Used Drought bonus
-91:Now you can build Watchtowers. Place a tower plan within the Castle, where you need to have it. You can build only %d towers.
+91:Now you can build Watchtowers. Place a tower plan within the Castle, where you need to have it. At the moment you can build only %d towers. You can buy extra towers, each of them costs %d gold. To buy a tower enter command %s into chat. You can have maximum of %d towers.
 92:You have enough towers already!
 93:Tip #1: Soldiers unlocking order: %s - %d kills; %s - %d kills; %s - %d kills; %s - %d kills; %s - %d kills; %s - %d kills; %s - %d kills; %s - %d kills; %s - %d kills.
 94:Reinforced Armor
 95:Your soldiers now have better armor, which can absorb a part of received damage.
 96:Your bonus
+97:Bought extra tower!
+98:Not enough gold (%d). You need %d to buy a tower.
+99:Towers limit is reached.
+100:Towers: %d/%d
