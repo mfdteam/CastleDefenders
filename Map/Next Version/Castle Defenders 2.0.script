@@ -6,6 +6,7 @@ const
   ROGUE_CHANCE = 0.4;                  //40% chance to get rogue when equipping militia
   KILL_CHANCE = 0.125;                 //12,5% chance to activate Immediate Kill bonus
   RETRIBUTION_CHANCE = 0.115;          //11,5% chance to activate Retribution bonus
+  ARMOR_CHANCE = 0.125;                //12,5% chance to activate Reinforced Armor bonus
   DOUBLE_CHANCE = 0.135;               //13,5% chance to activate Double bonus
   REBORN_CHANCE = 0.225;               //22,5% chance to activate Reborn bonus
   NEWBORN_CHANCE = 0.125;              //12,5% chance to activate Newborn Ally  bonus
@@ -78,7 +79,7 @@ var
   RescueSquadPositionX, RescueSquadPositionY, RescueSquadFormation: array[0..3] of array[0..4] of Integer;
   I, K, Wave, General, WaveTime, AIBarracks, AIGroup, LateBonusDelay: Integer;
   Unlocked: array[0..3] of array[15..23] of Boolean;
-  bImmediateKill, bDouble, bNewConscription, bRetribution,
+  bImmediateKill, bDouble, bNewConscription, bRetribution, bArmor,
   bReinforce, bReborn, bNewborn, Check, bMsg, bRescueMsg, bRanged, LateBonusCheck: Boolean;
   RallyPointX, RallyPointY, AttackPointX, AttackPointY: array[4..7] of Integer;
   AISpawnX, AISpawnY: array[0..2] of array[4..7] of Integer;
@@ -573,9 +574,15 @@ begin
     bNewborn := True;
   end;
 
-  if Wave = 33 then
+  if Wave = 32 then
   begin
     bNewborn := False;
+    bArmor := True;
+  end;
+
+  if Wave = 33 then
+  begin
+    bArmor := False;
     bRetribution := True;
   end;
 end;
@@ -653,6 +660,9 @@ begin
 
     if bRetribution then
       Result := 'DEBUG MODE ON! You now test bonus: Retribution|' + Info + '||';
+
+    if bArmor then
+      Result := 'DEBUG MODE ON! You now test bonus: Reinforced Armor|' + Info + '||';
 
   end;
 end;
@@ -878,6 +888,7 @@ begin
   bReborn := False;
   bNewborn := False;
   bRetribution := False;
+  bArmor := False;
   Check := False;
   bMsg := False;
   bRescueMsg := False;
@@ -923,7 +934,7 @@ end;
 
 procedure CheckBonus;
 begin
-  case States.KaMRandomI(160) of
+  case States.KaMRandomI(180) of
 
     0..19: begin
              bImmediateKill := True;
@@ -993,6 +1004,15 @@ begin
                 if not bMsg then
                 begin
                   Actions.ShowMsg(-1, '<$6> ' + '<$59>: ' + '<$60>');
+                  bMsg := True;
+                end;
+            end;
+
+    160..179: begin
+                bArmor := True;
+                if not bMsg then
+                begin
+                  Actions.ShowMsg(-1, '<$6> ' + '<$94>: ' + '<$95>');
                   bMsg := True;
                 end;
             end;
@@ -1515,6 +1535,17 @@ begin
         inc(Scores[States.UnitOwner(aUnitID)]);
         Actions.UnitKill(aAttacker, False);
       end;
+    end;
+  end;
+
+  if bArmor then
+  begin
+    if States.KaMRandom < (ARMOR_CHANCE / DifficultyFactor) then
+    begin
+      if (Utils.InRangeI(States.UnitOwner(aUnitID), 0, 3))
+      and (Utils.InRangeI(States.UnitType(aUnitID), 14, 27))
+      and (Utils.InRangeI(States.UnitOwner(aAttacker), 4, 7)) then
+        Actions.UnitHPChange(aUnitID, 1);
     end;
   end;
 end;
