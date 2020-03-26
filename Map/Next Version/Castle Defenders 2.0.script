@@ -1021,6 +1021,42 @@ begin
 end;
 
 
+function BonusName: ANSIString;
+begin
+
+  if Wave < BONUS_WAVE then
+    Result := '';
+
+  if bImmediateKill then
+    Result := '<$7>';
+
+  if bDouble then
+    Result := '<$8>';
+
+  if bNewConscription then
+    Result := '<$9>';
+
+  if bReinforce then
+    Result := '<$10>';
+
+  if bReborn then
+    Result := '<$11>';
+
+  if bNewborn then
+    Result := '<$12>';
+
+  if bRanged then
+    Result := '<$52>';
+
+  if bRetribution then
+    Result := '<$59>';
+
+  if bArmor then
+    Result := '<$94>';
+  
+end;
+
+
 procedure AddRecruits;
 begin
   for I := 0 to 3 do
@@ -4937,15 +4973,18 @@ begin
     for I := 0 to Length(SortedPlayers) - 1 do
       Actions.OverlayTextAppendFormatted(-1, '|<$0>' + ' ' + StatusString[SortedPlayers[I]], [States.PlayerColorText(SortedPlayers[I]), States.PlayerName(SortedPlayers[I]), Scores[SortedPlayers[I]]]);
 
+  if Wave >= BONUS_WAVE then
+    Actions.OverlayTextAppend(-1, '||<$96>: ' + '[$AA8970]' + BonusName + '[]');
+
   for I := 0 to 3 do
   begin
     if States.PlayerEnabled(I) then
       if Wave >= RESCUE_WAVE then
-        Actions.OverlayTextAppendFormatted(I, '<$50>', [RescueColor[I], RescuesCount[I], ((RescuesDelay[I] div 600) mod 60), ((RescuesDelay[I] div 10) mod 60), States.StatArmyCount(I), RescueArmy[I], States.StatUnitTypeCount(I, 13), RescueRecruits[I]]);
+        Actions.OverlayTextAppendFormatted(I, '||||<$50>', [RescueColor[I], RescuesCount[I], ((RescuesDelay[I] div 600) mod 60), ((RescuesDelay[I] div 10) mod 60), States.StatArmyCount(I), RescueArmy[I], States.StatUnitTypeCount(I, 13), RescueRecruits[I]]);
   end;
 
   if Wave >= LATE_BONUS_WAVE then
-    Actions.OverlayTextAppendFormatted(-1, '<$71>', [LateBonusHeaderColor(74, 80), LateBonusHeaderName[0], LateBonusHeaderColor(75, 80), LateBonusHeaderName[1], LateBonusHeaderColor(76, 80), LateBonusHeaderName[2], ((LateBonusDelay div 600) mod 60), ((LateBonusDelay div 10) mod 60)]);
+    Actions.OverlayTextAppendFormatted(-1, '||||<$71>', [LateBonusHeaderColor(74, 80), LateBonusHeaderName[0], LateBonusHeaderColor(75, 80), LateBonusHeaderName[1], LateBonusHeaderColor(76, 80), LateBonusHeaderName[2], ((LateBonusDelay div 600) mod 60), ((LateBonusDelay div 10) mod 60)]);
 
   if (((States.GameTime <= 25200) and (States.GameTime mod START_WAVES_DELAY = 0))
   or ((States.GameTime > 25200) and (States.GameTime <= 36000) and (States.GameTime mod MID_WAVES_DELAY = 0))
