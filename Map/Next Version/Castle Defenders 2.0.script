@@ -26,14 +26,13 @@ const
   MAX_RANGED = 150;                    //Maximum ranged count per player
   DEBUG_MODE = False;                  //Debug option, to see how script works
   INDIVIDUAL_BONUSES = False;          //Untested, individual bonuses for 18th wave
-  ALLOW_SPLITTING = False;             //Allows making troops of one soldier - OP
+  ENABLE_SPLITTING = False;             //Allows making troops of one soldier - OP
   MIN_UNITS_COUNT = 5;                 //Minimum soldiers per group
   LINK_RADIUS = 4;                     //Link alone soldiers within 4 tiles
   AUTOLINK_RADIUS = 6;                 //Link doubled groups within 6 tiles
   STATUS_SHOW_TIME = 150;              //15 seconds
   START_SERFS = 12;                    //12 serfs at start
   RANDOM_FACTOR = 100;                 //Random
-  ENABLE_SPLITTING = False;            //Anti-cheat (disables cmowla style abuse)
   SPLIT_CHECK_FACTOR = 15;             //Once per 15 ticks
   MAX_TOWERS = 4;                      //4 towers per player
   START_TOWERS = 2;                    //2 towers per player
@@ -1539,7 +1538,7 @@ end;
 
 procedure OnGroupOrderSplit(G1, G2: Integer);
 begin
-  if not ALLOW_SPLITTING then
+  if not ENABLE_SPLITTING then
     CheckSplittedGroups(States.GroupOwner(G1), True);
 end;
 
@@ -5266,7 +5265,7 @@ begin
       StatusString[I] := '';
 
   if (States.GameTime mod (1 + SPLIT_CHECK_FACTOR) = 0)
-  and (not ALLOW_SPLITTING) then
+  and (not ENABLE_SPLITTING) then
     for I := 0 to 3 do
       CheckSplittedGroups(I, False);
 
