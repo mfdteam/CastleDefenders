@@ -31,7 +31,7 @@ const
   LINK_RADIUS = 4;                     //Link alone soldiers within 4 tiles
   AUTOLINK_RADIUS = 6;                 //Link doubled groups within 6 tiles
   STATUS_SHOW_TIME = 150;              //15 seconds
-  START_SERFS = 12;                    //12 serfs at start
+  START_SERFS = 16;                    //16 serfs at start
   RANDOM_FACTOR = 100;                 //Random
   SPLIT_CHECK_FACTOR = 15;             //Once per 15 ticks
   MAX_TOWERS = 4;                      //4 towers per player
@@ -710,7 +710,7 @@ var
 begin
   for I := 0 to 8 do
     if States.PlayerEnabled(I) then
-      AutoFeed(I); 
+      AutoFeed(I);
 
   GetInitialAttack;
 
@@ -750,6 +750,11 @@ begin
   Storehouse[1] := States.HouseAt(63, 86);
   Storehouse[2] := States.HouseAt(88, 86);
   Storehouse[3] := States.HouseAt(82, 66);
+
+  for I := 0 to 3 do
+    if States.PlayerEnabled(I) then
+      while States.StatUnitTypeCount(I, 0) < START_SERFS do
+        Actions.GiveUnit(I, 0, States.HousePositionX(Storehouse[I]), States.HousePositionY(Storehouse[I]) + 1, 4);
 
   SpawnX[0] := 46;
   SpawnX[1] := 46;
