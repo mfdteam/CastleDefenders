@@ -26,7 +26,7 @@ const
   MAX_RANGED = 150;                    //Maximum ranged count per player
   DEBUG_MODE = False;                  //Debug option, to see how script works
   INDIVIDUAL_BONUSES = False;          //Untested, individual bonuses for 18th wave
-  ENABLE_SPLITTING = False;             //Allows making troops of one soldier - OP
+  ENABLE_SPLITTING = False;            //Allows making troops of one soldier - OP
   MIN_UNITS_COUNT = 5;                 //Minimum soldiers per group
   LINK_RADIUS = 4;                     //Link alone soldiers within 4 tiles
   AUTOLINK_RADIUS = 6;                 //Link doubled groups within 6 tiles
@@ -4862,8 +4862,8 @@ begin
 
   if ((not CanBuildRoads(X - 2, Y + 1, X, Y + 1))
   and (not CanBuildRoads(X - 1, Y + 1, X + 1, Y + 1)))
-  or ((not CanBuildRoads(X - 2, Y - 1, X - 2, Y + 1))
-  and (not CanBuildRoads(X + 1, Y - 1, X + 1, Y + 1))) then
+  or ((not CanBuildRoads(X - 2, Y - 2, X - 2, Y + 1))
+  and (not CanBuildRoads(X + 1, Y - 2, X + 1, Y + 1))) then
     Result := '<$102>: <$105> (' + IntToStr(ErrorX) + ', ' + IntToStr(ErrorY) + ')';
 
   if not (Utils.InRangeI(X, 46, 105)
@@ -4881,8 +4881,8 @@ begin
   and (Utils.InRangeI(Y, 80, 81)))
   and ((CanBuildRoads(X - 2, Y + 1, X, Y + 1))
   or (CanBuildRoads(X - 1, Y + 1, X + 1, Y + 1)))
-  and ((CanBuildRoads(X - 2, Y - 1, X - 2, Y + 1))
-  or (CanBuildRoads(X + 1, Y - 1, X + 1, Y + 1)));
+  and ((CanBuildRoads(X - 2, Y - 2, X - 2, Y + 1))
+  or (CanBuildRoads(X + 1, Y - 2, X + 1, Y + 1)));
 end;
 
 
