@@ -1531,13 +1531,14 @@ begin
 end;
 
 
-function OnGroupAllowOrderSplit(G: Integer): Boolean;
+procedure OnGroupBeforeOrderSplit(G: Integer; var aNewType: Integer; var aNewCnt: Integer; var aMixed: Boolean);
 begin
-  Result := True;
-  if not ENABLE_SPLITTING then
-    Result := States.GroupMemberCount(G) > Round(MIN_UNITS_COUNT * DifficultyFactor);
-  if not Result then
+  if (not ENABLE_SPLITTING)
+  and (States.GroupMemberCount(G) <= Round(MIN_UNITS_COUNT * DifficultyFactor) * 2) then
+  begin
+    aNewCnt := 0;
     Actions.ShowMsgFormatted(States.GroupOwner(G), '<$107>', [States.GroupMemberCount(G), Round(MIN_UNITS_COUNT * DifficultyFactor)]);
+  end;
 end;
 
 
