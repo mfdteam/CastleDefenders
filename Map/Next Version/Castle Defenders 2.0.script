@@ -44,6 +44,7 @@ const
   POISON_COMMAND = '/poison';          //Enter /poison into chat to use Poisoning bonus
   MOAT_COMMAND = '/moat';              //Enter /moat into chat to use Moat bonus
   DROUGHT_COMMAND = '/drought';        //Enter /drought into chat to use Stone Wall bonus
+  FOW_COMMAND = '/fow';                //Enter /fow 0 or /fow 1 to disable or enable FOW
   DIFFICULTY_FACTOR_NORMAL = 1;        //Difficulty factor for normal mode
   DIFFICULTY_FACTOR_EASY = 0.8;        //Difficulty factor for easy mode
   DIFFICULTY_FACTOR_HARD = 1.2;        //Difficulty factor for hard mode
@@ -85,6 +86,7 @@ var
   SortedPlayers, ActivePlayers: array of Integer;
   Entrance: array[0..3] of Integer;
   Stones: Integer;
+  Fog: Boolean;
 
 
 function DifficultyFactor: Single;
@@ -603,6 +605,8 @@ begin
   for I := 0 to 8 do
     if States.PlayerEnabled(I) then
       AutoFeed(I); 
+
+  Fog := True;
 
   GetInitialAttack;
 
@@ -1629,9 +1633,26 @@ begin
 end;
 
 
+{$COMMAND FOW: FOWEnableDisable}
+
+
+procedure FOWEnableDisable(P: Integer; aFOW: Integer);
+begin
+
+  if not Utils.InRangeI(P, 0, 3) then
+    Exit;
+
+  if not Utils.InRangeI(aFOW, 0, 1) then
+    Exit;
+
+  Fog := Boolean(aFOW);
+
+end;
+
+
 procedure UpdateFOW;
 begin
-  if States.MissionDifficulty <> mdEasy1 then
+  if Fog then
     for I := 0 to 3 do
       if States.PlayerEnabled(I) then
       begin
@@ -4722,6 +4743,9 @@ begin
     States.UnitTypeName(23), Utils.TruncTo(BARB_POINTS * DifficultyFactor * ArmyFactor, 20),
     States.UnitTypeName(22), Utils.CeilTo(KNIGHT_POINTS * DifficultyFactor * ArmyFactor, 25)]);
 
+  if States.GameTime >= 150 then
+    Actions.ShowMsgFormatted(P, '<$112>', [FOW_COMMAND + ' 0', FOW_COMMAND + ' 1']);
+
   if States.GameTime >= 200 then
     Actions.ShowMsg(P, '<$73>');
 
@@ -4887,6 +4911,9 @@ begin
     States.UnitTypeName(16), Utils.TruncTo(SWORD_POINTS * DifficultyFactor * ArmyFactor, 10),
     States.UnitTypeName(23), Utils.TruncTo(BARB_POINTS * DifficultyFactor * ArmyFactor, 20),
     States.UnitTypeName(22), Utils.CeilTo(KNIGHT_POINTS * DifficultyFactor * ArmyFactor, 25)]);
+
+  if States.GameTime = 150 then
+    Actions.ShowMsgFormatted(-1, '<$112>', [FOW_COMMAND + ' 0', FOW_COMMAND + ' 1']);
 
   if States.GameTime = 200 then
     Actions.ShowMsg(-1, '<$73>');
