@@ -60,7 +60,7 @@ const
   ARMY_UNLOCK_FACTOR = 0.9;            //x0.9 multiplier, for balance
   AUTOFEED_TIME = 6000;                //Every 10 min
   SHOW_MAP_VERSION = False;            //False by default, true in debug mode
-  MAP_VERSION = '[$CD9B4B]3.2 RC1[]';  //Map version
+  MAP_VERSION = '[$CD9B4B]3.3 RC1[]';  //Map version
 
 
 type
@@ -986,10 +986,10 @@ begin
     Result := '';
 
   if bImmediateKill then
-    Result := '(' + Utils.FormatFloat('0.##', 100 * KILL_CHANCE / DifficultyFactor) + '%)';
+    Result := '(<$110> ' + Utils.Format('%.2f%', [100 * KILL_CHANCE / DifficultyFactor]) + '<$111>)';
 
   if bDouble then
-    Result := '(' + Utils.FormatFloat('0.##', 100 * DOUBLE_CHANCE / DifficultyFactor) + '%)';
+    Result := '(<$110> ' + Utils.Format('%.2f%', [100 * DOUBLE_CHANCE / DifficultyFactor]) + '<$111>)';
 
   if bNewConscription then
     Result := '';
@@ -998,19 +998,19 @@ begin
     Result := '';
 
   if bReborn then
-    Result := '(' + Utils.FormatFloat('0.##', 100 * REBORN_CHANCE / DifficultyFactor) + '%)';
+    Result := '(<$110> ' + Utils.Format('%.2f%', [100 * REBORN_CHANCE / DifficultyFactor]) + '<$111>)';
 
   if bNewborn then
-    Result := '(' + Utils.FormatFloat('0.##', 100 * NEWBORN_CHANCE / DifficultyFactor) + '%)';
+    Result := '(<$110> ' + Utils.Format('%.2f%', [100 * NEWBORN_CHANCE / DifficultyFactor]) + '<$111>)';
 
   if bRanged then
-    Result := '(' + Utils.FormatFloat('0.##', 100 * RANGED_CHANCE / DifficultyFactor) + '%)';
+    Result := '(<$110> ' + Utils.Format('%.2f%', [100 * RANGED_CHANCE / DifficultyFactor]) + '<$111>)';
 
   if bRetribution then
-    Result := '(' + Utils.FormatFloat('0.##', 100 * RETRIBUTION_CHANCE / DifficultyFactor) + '%)';
+    Result := '(<$110> ' + Utils.Format('%.2f%', [100 * RETRIBUTION_CHANCE / DifficultyFactor]) + '<$111>)';
 
   if bArmor then
-    Result := '(' + Utils.FormatFloat('0.##', 100 * ARMOR_CHANCE / DifficultyFactor) + '%)';
+    Result := '(<$110> ' + Utils.Format('%.2f%', [100 * ARMOR_CHANCE / DifficultyFactor]) + '<$111>)';
 
 end;
 
@@ -4715,7 +4715,7 @@ end;
 procedure KillAllEnemies(P: Integer);
 var
   W: array of Integer;
-begin
+begin  
   for I := 4 to 7 do
   begin
     W := States.PlayerGetAllUnits(I);
