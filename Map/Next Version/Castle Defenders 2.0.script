@@ -1396,7 +1396,7 @@ end;
 procedure OnGroupBeforeOrderSplit(G: Integer; var aNewType: TKMUnitType; var aNewCnt: Integer; var aMixed: Boolean);
 begin
   if (not ENABLE_SPLITTING)
-  and (States.GroupMemberCount(G) <= Round(MIN_UNITS_COUNT * DifficultyFactor) * 2) then
+  and (States.GroupMemberCount(G) < Round(MIN_UNITS_COUNT * DifficultyFactor) * 2) then
   begin
     aNewCnt := 0;
     Actions.ShowMsgFormatted(States.GroupOwner(G), '<$107>', [States.GroupMemberCount(G), Round(MIN_UNITS_COUNT * DifficultyFactor)]);
@@ -1760,40 +1760,44 @@ begin
 
         14..18: Actions.GiveWares(I, 7, 16 + 4 * Q);
 
-        19..20: Actions.GiveWares(I, 7, 18 + 3 * Q);
+        19:     Actions.GiveWares(I, 7, 18 + 3 * Q);
 
         20:     begin
-                  Actions.GiveWares(I, 18, 10);
-                  Actions.GiveWares(I, 19, 10);
-                  Actions.GiveWares(I, 24, 10);
-                  Actions.GiveWares(I, 25, 10);
+                  Actions.GiveWares(I, 7, 18 + 3 * Q);
+                  Actions.GiveWeapons(I, 18, 10);
+                  Actions.GiveWeapons(I, 19, 10);
+                  Actions.GiveWeapons(I, 24, 10);
+                  Actions.GiveWeapons(I, 25, 10);
                 end;
 
-        21:     Actions.GiveWares(I, 7, 18 + 4 * Q);
+        21:     Actions.GiveWares(I, 7, 20 + 4 * Q);
+
+        22..25: Actions.GiveWares(I, 7, 20 + 5 * Q);
 
         26:     begin
-                  Actions.GiveWares(I, 18, 15);
-                  Actions.GiveWares(I, 19, 15);
-                  Actions.GiveWares(I, 24, 15);
-                  Actions.GiveWares(I, 25, 15);
+                  Actions.GiveWares(I, 7, 21 + 5 * Q);
+                  Actions.GiveWeapons(I, 18, 15);
+                  Actions.GiveWeapons(I, 19, 15);
+                  Actions.GiveWeapons(I, 24, 15);
+                  Actions.GiveWeapons(I, 25, 15);
                 end;
 
-        22..27: Actions.GiveWares(I, 7, 20 + 5 * Q);
+        27:     Actions.GiveWares(I, 7, 22 + 5 * Q);
 
         28:     Actions.GiveWares(I, 7, 24 + 6 * Q);
 
         29:     Actions.GiveWares(I, 7, 25 + 5 * Q);
 
-        30..31: Actions.GiveWares(I, 7, 28 + 4 * Q);
+        30:     Actions.GiveWares(I, 7, 28 + 4 * Q);
 
-        32..33: Actions.GiveWares(I, 7, 30 + 4 * Q);
+        31..33: Actions.GiveWares(I, 7, 30 + 4 * Q);
 
         34:     begin
                   Actions.GiveWares(I, 7, 30 + 5 * Q);
-                  Actions.GiveWares(I, 18, 25);
-                  Actions.GiveWares(I, 19, 25);
-                  Actions.GiveWares(I, 24, 25);
-                  Actions.GiveWares(I, 25, 25);
+                  Actions.GiveWeapons(I, 18, 25);
+                  Actions.GiveWeapons(I, 19, 25);
+                  Actions.GiveWeapons(I, 24, 25);
+                  Actions.GiveWeapons(I, 25, 25);
                 end;
 
         35:     Actions.GiveWares(I, 7, 30 + 6 * Q);
