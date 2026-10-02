@@ -49,7 +49,7 @@
 48:Time to die!
 49:Congrats! You reached 26th wave! New bonus available: Rescue Squad: You can get a reinforcement immediately if you have too less soldiers.|To use this bonus, enter command %s into chat or place road plan on special Rescue Tile.|NOTE: You can use this bonus 4 times. Every next use is delayed.|You can't use this bonus if you have enough soldiers and recruits!
 50:[$%s]Rescue squads available: %d |Delay: %.2d:%.2d ||Your army (CURRENT/USAGE LIMIT): %d/%d|Your recruits (CURRENT/USAGE LIMIT): %d/%d[]
-51:[$FE437A]Castle Defenders 3.2 (07.06.2020)[]||In this mission you should defend the Castle and defeat 35 enemy attacks. Every next attack is stronger than previous. You have a lot of weapons, but not so much gold and can't equip strong soldiers at start. You can unlock new soldiers by killing enemy troops.||ARMY UNLOCK ORDER ON NORMAL DIFFICULTY LVL:||50 kills - Lance Carrier;|100 kills - Axe Fighter;|160 kills - Bowman;|250 kills - Crossbowman;|400 kills - Pikeman;|500 kills - Scout;|700 kills - Sword Fighter;|1000 kills - Barbarian;|1250 kills - Knight.||To get Barbarian, enable barracks repair and equip militia when you have more than 1000 points.||You can also get rogues when equipping militias and get extra recruit training recruits. |Also, if you reach 18th, 26th and 31st wave you get useful bonuses!||Made by andreus.
+51:[$FE437A]Castle Defenders 3.3 (02.10.2026)[]||In this mission you should defend the Castle and defeat 35 enemy attacks. Every next attack is stronger than previous. You have a lot of weapons, but not so much gold and can't equip strong soldiers at start. You can unlock new soldiers by killing enemy troops.||ARMY UNLOCK ORDER ON NORMAL DIFFICULTY LVL:||50 kills - Lance Carrier;|100 kills - Axe Fighter;|160 kills - Bowman;|250 kills - Crossbowman;|400 kills - Pikeman;|500 kills - Scout;|700 kills - Sword Fighter;|1000 kills - Barbarian;|1250 kills - Knight.||To get Barbarian, enable barracks repair and equip militia when you have more than 1000 points.||You can also get rogues when equipping militias and get extra recruit training recruits. |Also, if you reach 18th, 26th and 31st wave you get useful bonuses!||Made by andreus.
 52:Rifle Division
 53:You have chances to get extra ranged units when equipping melee units.
 54:Barbarians incoming?
@@ -71,15 +71,15 @@
 70:[$CD9B4B]Castle Defenders[]
 71:Team bonuses available: [$%s]%s[], [$%s]%s[], [$%s]%s[] |Delay: %.2d:%.2d
 72:Don't forget about Rescue Squad bonus - you can use it right now! Just enter command %s into chat or place road plan in the special rescue tile located in the wall corner where this message sends you!
-73:Tip #2: Don't waste gold! You have not so much gold, and a lot of weak soldiers equipped too early will be useless later.
-74:Tip #3: Arrange defence positions within team. The best way is to defend corners (two flank and one middle entrances per player).
-75:Tip #4: No need to send much soldiers to defend flanks until 13th wave. Only some enemy soldiers could go there, so one small squad will be enough to kill them.
-76:Tip #5: Check wave names - sometimes they can help you to choose troops for defence.
-77:Tip #6: From now you have to defend flanks.
-78:Tip #7: To use Rescue Squad bonus, you should have too less soldiers and recruits. Usage limits: %d soldiers and %d recruits.
-79:Tip #9: To use Lategame Bonuses, place winefield plan one tile down from special objects near the allied Barracks.
-80:Tip #8: Lost all your serfs? Don't worry! Place Field plans within the Castle to respawn them or enter console command %s into chat.
-81:Tip #10: From now enemies will send extra ambush squads to attack the Castle. Prepare for long sieges!
+73:Tip #3: Don't waste gold! You have not so much gold, and a lot of weak soldiers equipped too early will be useless later.
+74:Tip #4: Arrange defence positions within team. The best way is to defend corners (two flank and one middle entrances per player).
+75:Tip #5: No need to send much soldiers to defend flanks until 13th wave. Only some enemy soldiers could go there, so one small squad will be enough to kill them.
+76:Tip #6: Check wave names - sometimes they can help you to choose troops for defence.
+77:Tip #7: From now you have to defend flanks.
+78:Tip #8: To use Rescue Squad bonus, you should have too less soldiers and recruits. Usage limits: %d soldiers and %d recruits.
+79:Tip #10: To use Lategame Bonuses, place winefield plan one tile down from special objects near the allied Barracks.
+80:Tip #9: Lost all your serfs? Don't worry! Place Field plans within the Castle to respawn them or enter console command %s into chat.
+81:Tip #11: From now enemies will send extra ambush squads to attack the Castle. Prepare for long sieges!
 82:Ambushed!
 83:Unlocked
 84:Used Rescue Squad!
@@ -108,3 +108,6 @@
 107:Can't split this troop of %d members. Each group should have at least %d group members after splitting
 108:is occupied by unit
 109:The King has sent reinforcement: %d %s
+110:Activation chance:
+111:%%
+112:Tip #2: FOW will cover all revealed areas outside the Castle with every new wave. To disable this option, enter command %s into game chat. To enable FOW again, use command %s.
