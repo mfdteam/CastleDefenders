@@ -4718,7 +4718,10 @@ begin
     {$IFDEF DEBUG_MODE}
     if length(W) > 0 then
       for K := Low(W) to High(W) do
+      begin
         Actions.UnitKill(W[K], True);
+        Scores[P] := Scores[P] + 1;
+      end;
     {$ENDIF}
   end;
 end;
