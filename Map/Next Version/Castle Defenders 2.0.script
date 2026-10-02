@@ -1568,7 +1568,7 @@ begin
         end;
       end;
 
-  if (not Unlocked[Owner][23])
+  if (Unlocked[Owner][23])
   and (States.HouseRepair(Barracks[Owner]))
   and (States.HouseResourceAmount(Barracks[Owner], 20) > 3)
   and (States.UnitType(aUnitID) = 14) then
